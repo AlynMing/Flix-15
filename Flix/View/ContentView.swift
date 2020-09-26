@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Flix
 //
-//  Created by Zhe Liu on 9/19/20.
+//  Created by Lillian Chen on 9/19/20.
 //
 
 import SwiftUI
@@ -18,17 +18,17 @@ struct ContentView: View {
                 HStack {
                     KFImage(movie.posterURL)
                         .resizable()
-                        .aspectRatio(0.67, contentMode: .fill)
-                        .frame(width: 80, height: 120)
+                        .aspectRatio(moviePosterAspectRatio, contentMode: .fill)
+                        .frame(width: moviePosterWidth, height: moviePosterHeight)
                     VStack(alignment: .leading) {
                         Text(movie.title)
                             .font(.title2)
                             .bold()
-                            .padding(.bottom, 3)
+                            .padding(.bottom, textPadding)
                         Text(movie.overview)
                             .font(.body)
-                            .lineLimit(3)
-                            .padding(.top, 3)
+                            .lineLimit(lineLimit)
+                            .padding(.top, textPadding)
                     }
                 }
             }.onAppear() {
@@ -37,6 +37,12 @@ struct ContentView: View {
             .navigationBarTitle("Movies", displayMode: .inline)
         }
     }
+    
+    private let moviePosterAspectRatio: CGFloat = 0.67
+    private let moviePosterWidth: CGFloat = 80.0
+    private let moviePosterHeight: CGFloat = 120.0
+    private let textPadding: CGFloat = 3.0
+    private let lineLimit: Int = 3
 }
 
 struct ContentView_Previews: PreviewProvider {

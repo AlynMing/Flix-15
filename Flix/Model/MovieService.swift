@@ -2,7 +2,7 @@
 //  MovieService.swift
 //  Flix
 //
-//  Created by Zhe Liu on 9/21/20.
+//  Created by Lillian Chen on 9/21/20.
 //
 
 import Foundation

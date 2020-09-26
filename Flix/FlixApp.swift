@@ -2,7 +2,7 @@
 //  FlixApp.swift
 //  Flix
 //
-//  Created by Zhe Liu on 9/19/20.
+//  Created by Lillian Chen on 9/19/20.
 //
 
 import SwiftUI
