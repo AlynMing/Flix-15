@@ -1,23 +1,23 @@
 //
-//  MoviesViewModel.swift
+//  SuperheroMoviesViewModel.swift
 //  Flix
 //
-//  Created by Lillian Chen on 9/21/20.
+//  Created by Lillian Chen on 9/30/20.
 //
 
 import Foundation
 import Combine
 
-class MoviesViewModel: ObservableObject {
+final class SuperheroMoviesViewModel: ObservableObject {
     
-    let title: String = "Movies"
+    let title: String = "Superhero"
     
     @Published private(set) var movies: [Movie] = [Movie]()
     
     private var cancellable: AnyCancellable?
     
     init() {
-        cancellable = MovieService().fetchMovies()
+        cancellable = MovieService().fetchSuperHeroMovies()
                         .sink(receiveCompletion: { _ in
                             
                         }, receiveValue: { [weak self] movieResults in
