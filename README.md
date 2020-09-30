@@ -12,7 +12,7 @@
 
 ### App Walkthrough GIF
 
-<img src=https://recordit.co/V8Ia8pikZS width=250><br>
+<img src=https://recordit.co/V8Ia8pikZS.gif width=250><br>
 
 ### Notes
 Describe any challenges encountered while building the app.
@@ -38,7 +38,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 ### App Walkthrough GIF
 
-<img src=https://recordit.co/KrHmA3j7oG width=250><br>
+<img src=https://recordit.co/KrHmA3j7oG.gif width=250><br>
 
 ### Notes
 Describe any challenges encountered while building the app.
