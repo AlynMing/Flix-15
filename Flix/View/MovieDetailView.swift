@@ -10,24 +10,40 @@ import KingfisherSwiftUI
 
 struct MovieDetailView: View {
     
-    var movie: Movie
+    @ObservedObject var movieDetailViewModel: MovieDetailViewModel
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
-                VStack(spacing: 0) {
-                    KFImage(movie.backdropURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: geometry.size.width , height: geometry.size.height / 2.0)
-                    MovieInfoView(movie: movie)
-                        .offset(y: -moviePosterHeight / 2.0)
+            if movieDetailViewModel.isLoading {
+                ProgressView()
+            } else {
+                ScrollView {
+                    VStack(spacing: 0) {
+                        KFImage(movieDetailViewModel.movie.backdropURL)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width , height: geometry.size.height / 2.0)
+                        MovieInfoView(movie: movieDetailViewModel.movie)
+                            .offset(y: -moviePosterHeight / 2.0)
+                            .environmentObject(movieDetailViewModel)
+                    }
+                }.sheet(isPresented: $movieDetailViewModel.showingMovieTrailer) {
+                    NavigationView {
+                        WebDisplayView(url: movieDetailViewModel.movieTrailer!.trailerURL)
+                            .navigationBarItems(leading:
+                                Button {
+                                    movieDetailViewModel.showingMovieTrailer = false
+                                } label: {
+                                    Text("Done")
+                                }
+                            )
+                    }
                 }
             }
         }
         .background(Color.black)
         .edgesIgnoringSafeArea(.bottom)
-        .navigationTitle(movie.title)
+        .navigationTitle(movieDetailViewModel.movie.title)
     }
     
     private let moviePosterHeight: CGFloat = 140.0
@@ -35,6 +51,7 @@ struct MovieDetailView: View {
 
 struct MovieInfoView: View {
     
+    @EnvironmentObject var movieDetailViewModel: MovieDetailViewModel
     let movie: Movie
     
     var body: some View {
@@ -45,6 +62,9 @@ struct MovieInfoView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: moviePosterWidth, height: moviePosterHeight)
                     .padding(.leading, contentSpacing)
+                    .onTapGesture {
+                        movieDetailViewModel.getMovieTrailer()
+                    }
                 VStack(alignment: .leading, spacing: 0) {
                     Text(movie.title)
                         .font(.system(size: movieTitleFontSize))
@@ -75,10 +95,12 @@ struct MovieInfoView: View {
 
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView(movie: Movie(title: "Ava",
-                                     poster_path: "qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg",
-                                     overview: "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong.",
-                                     backdrop_path: "qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg",
-                                     release_date: "2020-08-06"))
+        let movie = Movie(title: "Ava",
+                          poster_path: "qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg",
+                          overview: "A black ops assassin is forced to fight for her own survival after a job goes dangerously wrong.",
+                          backdrop_path: "qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg",
+                          release_date: "2020-08-06",
+                          id: 539885)
+        MovieDetailView(movieDetailViewModel: MovieDetailViewModel(with: movie))
     }
 }

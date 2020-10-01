@@ -29,12 +29,30 @@ struct MovieService {
         return components.url!
     }
     
+    private func movieTrailerURL(of id: Int) -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.themoviedb.org"
+        components.path = "/3/movie/" + String(id) + "/videos"
+        components.queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+        return components.url!
+    }
+    
     func fetchMovies() -> AnyPublisher<MovieResults, Error> {
         return movieRequestion(for: moviesURL)
     }
     
     func fetchSuperHeroMovies() -> AnyPublisher<MovieResults, Error> {
         return movieRequestion(for: superheroMovieURL)
+    }
+    
+    func fetchMovieTrailer(for id: Int) -> AnyPublisher<MovieTrailer?, Error> {
+        return URLSession.shared.dataTaskPublisher(for: movieTrailerURL(of: id))
+                    .map { $0.data }
+                    .decode(type: MovieTrailerResult.self, decoder: JSONDecoder())
+                    .map { $0.results.first }
+                    .receive(on: DispatchQueue.main)
+                    .eraseToAnyPublisher()
     }
     
     private func movieRequestion(for url: URL) -> AnyPublisher<MovieResults, Error> {

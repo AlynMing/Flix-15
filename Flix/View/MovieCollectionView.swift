@@ -17,7 +17,7 @@ struct MovieCollectionView: View {
             VStack {
                 LazyVGrid(columns: [GridItem(.flexible(), spacing: itemSpacing), GridItem(.flexible())], spacing: itemSpacing) {
                     ForEach(superheroMovieViewModel.movies, id:\.self) { movie in
-                        NavigationLink(destination: MovieDetailView(movie: movie)) {
+                        NavigationLink(destination: MovieDetailView(movieDetailViewModel: MovieDetailViewModel(with: movie))) {
                             KFImage(movie.posterURL)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)

@@ -13,6 +13,7 @@ struct Movie: Decodable, Hashable {
     let overview: String
     let backdrop_path: String
     let release_date: String
+    let id: Int
 }
 
 struct MovieResults: Decodable {

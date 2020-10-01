@@ -15,7 +15,7 @@ struct MovieListView: View {
     var body: some View {
         List(viewModel.movies, id: \.self) { movie in
             NavigationLink(
-                destination: MovieDetailView(movie: movie))
+                destination: MovieDetailView(movieDetailViewModel: MovieDetailViewModel(with: movie)))
                 {
                     HStack {
                         KFImage(movie.posterURL)

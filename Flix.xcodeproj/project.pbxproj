@@ -21,6 +21,11 @@
 		C4B501FD25252B82005646DF /* TabContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B501FC25252B82005646DF /* TabContainerViewModel.swift */; };
 		C4B5020025253BA6005646DF /* MovieCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B501FF25253BA6005646DF /* MovieCollectionView.swift */; };
 		C4B5020325254228005646DF /* SuperheroMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5020225254228005646DF /* SuperheroMoviesViewModel.swift */; };
+		C4B502062525977D005646DF /* MovieTrailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B502052525977D005646DF /* MovieTrailer.swift */; };
+		C4B5020925259C5A005646DF /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5020825259C5A005646DF /* MovieDetailViewModel.swift */; };
+		C4B5020D2525A824005646DF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B5020C2525A824005646DF /* WebKit.framework */; };
+		C4B5020F2525A834005646DF /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5020E2525A834005646DF /* WebView.swift */; };
+		C4B502132525B4DF005646DF /* WebDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B502122525B4DF005646DF /* WebDisplayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,11 @@
 		C4B501FC25252B82005646DF /* TabContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerViewModel.swift; sourceTree = "<group>"; };
 		C4B501FF25253BA6005646DF /* MovieCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionView.swift; sourceTree = "<group>"; };
 		C4B5020225254228005646DF /* SuperheroMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroMoviesViewModel.swift; sourceTree = "<group>"; };
+		C4B502052525977D005646DF /* MovieTrailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrailer.swift; sourceTree = "<group>"; };
+		C4B5020825259C5A005646DF /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		C4B5020C2525A824005646DF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C4B5020E2525A834005646DF /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		C4B502122525B4DF005646DF /* WebDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B5020D2525A824005646DF /* WebKit.framework in Frameworks */,
 				C412C87E25167D020044B060 /* KingfisherSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +69,7 @@
 			children = (
 				C412C86C251679AB0044B060 /* Flix */,
 				C412C86B251679AB0044B060 /* Products */,
+				C4B5020B2525A824005646DF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +109,7 @@
 			children = (
 				C412C8A225199D050044B060 /* Movie.swift */,
 				C4B501F925252AEE005646DF /* TabItem.swift */,
+				C4B502052525977D005646DF /* MovieTrailer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +120,7 @@
 				C412C8A625199FD40044B060 /* MoviesViewModel.swift */,
 				C4B501FC25252B82005646DF /* TabContainerViewModel.swift */,
 				C4B5020225254228005646DF /* SuperheroMoviesViewModel.swift */,
+				C4B5020825259C5A005646DF /* MovieDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -118,6 +132,8 @@
 				C4B501FF25253BA6005646DF /* MovieCollectionView.swift */,
 				C412C86F251679AB0044B060 /* MovieListView.swift */,
 				C4B501F625252AC7005646DF /* TabContainerView.swift */,
+				C4B5020E2525A834005646DF /* WebView.swift */,
+				C4B502122525B4DF005646DF /* WebDisplayView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,6 +144,14 @@
 				C412C8A425199DCB0044B060 /* MovieService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C4B5020B2525A824005646DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4B5020C2525A824005646DF /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,12 +234,16 @@
 				C412C86E251679AB0044B060 /* FlixApp.swift in Sources */,
 				C4B5020025253BA6005646DF /* MovieCollectionView.swift in Sources */,
 				C4B501FD25252B82005646DF /* TabContainerViewModel.swift in Sources */,
+				C4B5020925259C5A005646DF /* MovieDetailViewModel.swift in Sources */,
 				C4B5020325254228005646DF /* SuperheroMoviesViewModel.swift in Sources */,
 				C412C8A525199DCB0044B060 /* MovieService.swift in Sources */,
 				C412C8A325199D050044B060 /* Movie.swift in Sources */,
+				C4B502062525977D005646DF /* MovieTrailer.swift in Sources */,
 				C412C8A725199FD40044B060 /* MoviesViewModel.swift in Sources */,
 				C4B501FA25252AEE005646DF /* TabItem.swift in Sources */,
+				C4B502132525B4DF005646DF /* WebDisplayView.swift in Sources */,
 				C4B501F725252AC7005646DF /* TabContainerView.swift in Sources */,
+				C4B5020F2525A834005646DF /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
